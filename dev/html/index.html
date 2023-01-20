@@ -8,21 +8,16 @@
         <link rel="stylesheet" href="./css/main.css" />
     </head>
     <body>
-        <header class="header">
-            <h1>Hello from index.html</h1>
-    
-        </header>
+      @@include('./sections/_header.html')
         
         <h2> my name is Nastya. </h2>
         <p>I'm making landing page</p>   
         <div class="link">
             <div class="card"><a href="#">LINK TO SECRET</a></div>
-            <a href="#">Another link</a>
+
+            <div class="card"><a href="contacts.html">Contacts link</a></div>
             <a href="#">one</a>
         </div> 
-        <footer class="footer">
-            <a href="#">Privacy policy</a>
-            <a href="#"><img alt="logo"></a>
-        </footer>
+      @@include('./sections/_footer.html')
     </body>
 </html>
