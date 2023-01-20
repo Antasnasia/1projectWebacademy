@@ -13,6 +13,8 @@
   "author": "Antasnasia",
   "license": "ISC",
   "dependencies": {
-    "gulp": "^4.0.2"
+    "browser-sync": "^2.27.11",
+    "gulp": "^4.0.2",
+    "gulp-watch": "^5.0.1"
   }
 }
