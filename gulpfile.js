@@ -12,7 +12,16 @@ const pug = require('gulp-pug');
 
 // таск для сборки pug файлов
 gulp.task('pug', function() {
-    return gulp.src('./dev/pug/pages/**/*.pug')
+    return gulp.src('./src/pug/pages/**/*.pug')
+        .pipe(plumber ({
+             errorHandler: notify.onError(function(err) {
+                 return {
+                     title: "Pug",
+                     sound: false,
+                    message: err.message
+                 }
+             })
+        }))
         .pipe(pug({
             pretty: true
         }))
@@ -23,7 +32,7 @@ gulp.task('pug', function() {
 
 //таск для компиляции и обработки файлов scss
 gulp.task('scss', function(callback) {
-    return (gulp.src('./dev/scss/main.scss'))
+    return (gulp.src('./src/scss/main.scss'))
     .pipe(plumber ({
         errorHandler: notify.onError(function(err) {
             return {
@@ -55,7 +64,7 @@ gulp.task('scss', function(callback) {
 gulp.task('server', function() {
     browserSync.init( {
         server: {
-            baseDir: "./dist"
+            baseDir: "./dist/"
         }
     })
 });
@@ -63,8 +72,8 @@ gulp.task('server', function() {
 //Таск для отслеживаниями изменений в файлах
 gulp.task('watch', function() {
    
-    watch ('./dev/scss/**/*.scss', gulp.parallel('scss'));
-   watch('./dev/pug/**/*.pug', gulp.parallel('pug'));
+    watch ('./src/scss/**/*.scss', gulp.parallel('scss'));
+   watch('./src/pug/**/*.pug', gulp.parallel('pug'));
     watch(['./dist/*.html', './dist/css/**/*.css'], gulp.parallel(browserSync.reload));
 });
 //Дефолтный запуск gulp
