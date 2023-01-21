@@ -8,26 +8,18 @@ const plumber= require('gulp-plumber');
 const notify= require('gulp-notify');
 const gcmq = require('gulp-group-css-media-queries');
 const sassGlob = require('gulp-sass-glob');
-const fileInclude= require('gulp-file-include');
+const pug = require('gulp-pug');
 
-// таск для сборки html файлов
-gulp.task ('html', function (callback) {
-    return gulp.src('./dev/html/*.html') //в папке html хранятся все основные страницы нашего сайта - основной index.html, page. contacts etc. в подпапке sections хранятся шаблоны частей сайта (header.html, content.html, footer.html etc), кот. компилироватся не будут
-    .pipe(plumber({
-        errorHandler: notify.onError(function(err) {
-            return {
-                title: "HTML include",
-                sound: false,
-                message: err.message
-            }
-        })
-    }))
-    .pipe(fileInclude({  prefix: '@@'  }))
-    
-    .pipe(gulp.dest('./dist/')) //путь сохранения скомпилированного файла
-    ;
-    callback();
-})
+// таск для сборки pug файлов
+gulp.task('pug', function() {
+    return gulp.src('./dev/pug/pages/**/*.pug')
+        .pipe(pug({
+            pretty: true
+        }))
+
+
+        .pipe(gulp.dest('./dist/'))
+});
 
 //таск для компиляции и обработки файлов scss
 gulp.task('scss', function(callback) {
@@ -72,10 +64,10 @@ gulp.task('server', function() {
 gulp.task('watch', function() {
    
     watch ('./dev/scss/**/*.scss', gulp.parallel('scss'));
-    watch('./dev/html/**/*.html', gulp.parallel('html'));
+   watch('./dev/pug/**/*.pug', gulp.parallel('pug'));
     watch(['./dist/*.html', './dist/css/**/*.css'], gulp.parallel(browserSync.reload));
 });
 //Дефолтный запуск gulp
-gulp.task('default', gulp.parallel('server', 'watch', 'html', 'scss'));
+gulp.task('default', gulp.parallel('server', 'watch',  'scss', 'pug'));
 
 
