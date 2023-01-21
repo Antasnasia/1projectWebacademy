@@ -23,7 +23,9 @@ gulp.task ('html', function (callback) {
         })
     }))
     .pipe(fileInclude({  prefix: '@@'  }))
-    .pipe(gulp.dest('./dist/')); //путь сохранения скомпилированного файла
+    
+    .pipe(gulp.dest('./dist/')) //путь сохранения скомпилированного файла
+    ;
     callback();
 })
 
@@ -68,9 +70,10 @@ gulp.task('server', function() {
 
 //Таск для отслеживаниями изменений в файлах
 gulp.task('watch', function() {
-    watch(['./dist/*.html', './dist/css/**/*.css']), gulp.parallel(browserSync.reload);
+   
     watch ('./dev/scss/**/*.scss', gulp.parallel('scss'));
     watch('./dev/html/**/*.html', gulp.parallel('html'));
+    watch(['./dist/*.html', './dist/css/**/*.css'], gulp.parallel(browserSync.reload));
 });
 //Дефолтный запуск gulp
 gulp.task('default', gulp.parallel('server', 'watch', 'html', 'scss'));

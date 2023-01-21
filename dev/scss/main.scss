@@ -1,33 +1,12 @@
-$font: 'Times New Roman', Times, serif;
-$textcolor: #000;
-$maincolor: #96f8e8;
-$linkcolor: #e71111;
+// подключаем переменные
+@import './vars/variables';
 
-body {
-    font-size: 100%;
-    line-height: 120%;
-    font-family: $font;
-    color: $textcolor;
-    background-color: $maincolor;
-}
+// подключаем базовые стили
+@import "./base/base";
 
-.link {
-   text-align: center;
-    background-color:#ddf8f4;
-    width: 600px;
-    height: 200px;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-        a { text-decoration: none;
-    color: $linkcolor;
-    transition: all 0.5s ease-in;
+// подключаем секции;
+@import './blocks/**/*.scss';
 
-        }
-}
+//подключаем утилиты;
 
-.link a:hover, .link a:active {
-    color: green;
-   
-   
-}
+@import "./utils/**/*/scss";

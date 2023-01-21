@@ -1,0 +1,28 @@
+body {
+    font-size: 100%;
+    line-height: 120%;
+    font-family: $font;
+    color: $textcolor;
+    background-color: $maincolor;
+}
+
+.link {
+   text-align: center;
+    background-color:#ddf8f4;
+    width: 800px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+        a { text-decoration: none;
+    color: $linkcolor;
+    transition: all 0.5s ease-in;
+
+        }
+}
+
+.link a:hover, .link a:active {
+    color: green;
+   
+   
+}
