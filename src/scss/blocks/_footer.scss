@@ -2,8 +2,12 @@
     width: 800px;
     height: 60px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+        a {
+            text-decoration: none;
+            color:$linkcolor;
+        }
 }
 @media (max-width: 992px) {
    .footer {
