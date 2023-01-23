@@ -16,7 +16,7 @@ const clean = require('gulp-clean');
 // таск для сборки pug файлов
 gulp.task('pug', function(callback) {
     return gulp.src('./src/pug/pages/**/*.pug')
-        .pipe(plumber ({
+      /*  .pipe(plumber ({
              errorHandler: notify.onError(function(err) {
                  return {
                      title: "Pug",
@@ -24,7 +24,7 @@ gulp.task('pug', function(callback) {
                     message: err.message
                  }
              })
-        }))
+        }))*/
         .pipe(pug({
             pretty: true
         }))

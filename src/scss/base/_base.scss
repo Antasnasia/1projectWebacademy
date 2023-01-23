@@ -1,6 +1,6 @@
 body {
-    font-size: 100%;
-    line-height: 120%;
+    font-size: 16px;
+    line-height: 1.2em;
     font-family: $font;
     color: $textcolor;
     background-color: $maincolor;
@@ -27,4 +27,9 @@ body {
     text-decoration-thickness: 15%;
    
    
+}
+h1 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
 }

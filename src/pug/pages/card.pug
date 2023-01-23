@@ -1,0 +1,11 @@
+extends ../layouts/master-page.pug
+include ../mixins/mixin
+block variables
+    -var pagetitle = "Card"
+
+block content 
+    h1 card page 
+
+    +card("Card #1", "#")
+    +card("Card #2", "#")
+    +card("Card #3", "#")
